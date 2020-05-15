@@ -1,0 +1,18 @@
+class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        int count = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < time.length; i++) {
+            if (map.containsKey((60 - time[i] % 60) % 60)) {//if the sum of the reminder time[i] and other value in the hash
+            // map is the mutiple of 60(in this case, we need to consider the "0" case in interval[0,60000]), so we % 60 again,
+            //since for example time[i] = 120, 60 - time[i] % 60 = 60, so there is no value can add 60 up to 60.
+                count += map.get((60 - time[i] % 60) % 60);
+            }
+            
+            map.put(time[i] % 60, map.getOrDefault(time[i] % 60, 0) + 1);
+        }
+        
+        return count;
+    }
+}
