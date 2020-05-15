@@ -1,0 +1,27 @@
+class Solution {
+    public int shipWithinDays(int[] weights, int D) {
+        int right = 0;
+        int left = 0;
+        for(int n: weights){
+            right += n;
+            left = Math.max(n,left);
+        }
+        while(left < right){
+            int cur = 0, cap_day = 1;
+            int cap = (left+right)/2;
+            for(int nums: weights){
+                if(cap < cur+ nums){
+                    cur = 0;
+                    cap_day ++;
+                }
+                cur += nums;
+            }
+            if(cap_day > D){
+                left = cap+1;
+            }else if(cap_day<= D){
+                right = cap;
+            }
+        }
+        return left;
+    }
+}
