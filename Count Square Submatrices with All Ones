@@ -1,0 +1,15 @@
+class Solution {
+    public int countSquares(int[][] matrix) {
+        int res = 0;
+        for(int height = 0; height < matrix.length; height++){
+            for(int wide = 0; wide < matrix[0].length; wide ++){
+                if(matrix[height][wide] > 0 && height>=1 && wide >=1){
+                    matrix[height][wide] = Math.min(matrix[height-1][wide],Math.min(matrix[height][wide-1],matrix[height-1][wide-1]))+1;
+                }
+                res += matrix[height][wide];//why put "res += matrix[height][wide]" out of loop, since the matrix[0][j] and
+                //matrix[0][j]  can not into the loop 
+            }
+        }
+        return res;
+    }
+}
