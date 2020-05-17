@@ -1,0 +1,17 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans;
+        Queue <List<Integer>> queue = new LinkedList<>();
+        queue.offer(new ArrayList<>());
+        for(int i = 0; i < nums.length; i++){
+            int len = queue.size();
+            for(int j= 0;j < len;j++){
+                List<Integer> List = queue.poll();
+                queue.offer(new ArrayList<>(List));
+                List.add(nums[i]);
+                queue.offer(List);
+            }
+        }
+        return ans = new ArrayList<>(queue);
+    }
+}
