@@ -5,11 +5,10 @@ leetcode solution
 
 - [Array](#DFS)
 
-- [Data Structure](#Data Structure)
+- [Basic Knowledge](#Data Structure)
 
-- [Structure](#Data Structure)
 
-- [Data Structure](#Data Structure)
+
 
 
 ## Array
