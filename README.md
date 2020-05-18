@@ -5,7 +5,10 @@ leetcode solution
 
 - [Array](#DFS)
 
-- [Basic Knowledge](#Data Structure)
+- [DS](#DS)
+- [Usage](#usage)
+	- [Generator](#generator)
+- [Badge](#badge)
 
 
 
