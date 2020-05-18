@@ -5,7 +5,7 @@ leetcode solution
 
 - [Array](#DFS)
 
-- [Data Structure](#Data Structure)
+- [Structure](#Data Structure)
 
 - [Data Structure](#Data Structure)
 
