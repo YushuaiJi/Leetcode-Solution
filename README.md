@@ -12,3 +12,4 @@ leetcode solution
  [Array](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Array)
  
 ## Basic knowledge for Data Structure
+[Basic knowledge for Data Structure](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
