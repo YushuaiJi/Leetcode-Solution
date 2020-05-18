@@ -5,7 +5,7 @@ leetcode solution
 
 - [Array](#DFS)
 
-- [Data Structure](#Basic knowledge for Data Structure)
+- [Basic knowledge for Data Structure](#Basic knowledge for Data Structure)
 
 
 ## Array
