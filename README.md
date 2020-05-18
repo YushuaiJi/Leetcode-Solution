@@ -5,6 +5,8 @@ leetcode solution
 
 - [Array](#DFS)
 
+- [Install](#install)
+
 - [Structure](#Data Structure)
 
 - [Data Structure](#Data Structure)
