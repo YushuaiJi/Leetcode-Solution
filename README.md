@@ -1,2 +1,6 @@
 # Leetcode_solution
-there is the Leetcode solution
+leetcode solution
+
+## Table of Contents
+
+- [DFS](#DFS)
