@@ -3,8 +3,8 @@ leetcode solution
 
 ## Table of Contents
 
-- [DFS](#DFS)
+- [Array](#DFS)
 
 
-## DFS
- [IPFS](https://github.com/ipfs)
+## Array
+ [Array](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Array)
