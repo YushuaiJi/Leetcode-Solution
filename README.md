@@ -6,9 +6,6 @@ leetcode solution
 - [Array](#DFS)
 
 - [DS](#DS)
-- [Usage](#usage)
-	- [Generator](#generator)
-- [Badge](#badge)
 
 
 
@@ -18,4 +15,4 @@ leetcode solution
  [Array](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Array)
  
 ## Data Structure
-[Data Structure](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
+[DS](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
