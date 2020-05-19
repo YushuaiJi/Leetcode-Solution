@@ -1,0 +1,33 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if(nums1.length > nums2.length){
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        int l1 = nums1.length;
+        int l2 = nums2.length;
+        int left_position = 0;
+        int right_position = l1;
+        while(left_position <= right_position){
+            int positionX = (left_position+right_position)/2;
+            int positionY = (l2+l1+1)/2-positionX;
+            int leftX1 = (positionX == 0) ? Integer.MIN_VALUE : nums1[positionX-1];
+            int rightX1 = (positionX == l1) ? Integer.MAX_VALUE : nums1[positionX];
+            int leftX2 = (positionY == 0) ? Integer.MIN_VALUE : nums2[positionY-1];
+            int rightX2 = (positionY == l2) ? Integer.MAX_VALUE : nums2[positionY];
+            if(leftX2<=rightX1 &&leftX1<=rightX2){
+                if((l1+l2) % 2 == 0){
+                   double res = (double)(Math.max(leftX2,leftX1)+Math.min(rightX1,rightX2))/2;
+                   return res;
+                }else{
+                    double res = (double)Math.max(leftX2,leftX1);
+                    return res;
+                }
+                }else if(leftX1>rightX2){
+                   right_position =positionX-1;
+                }else{
+                   left_position =positionX+1;
+                }
+            }
+                throw new IllegalArgumentException();
+        }
+}
