@@ -1,0 +1,18 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> map = new HashMap<>();// use hashmap tp store the the element as key and index as value.
+        int[] res = new int[2];//result is two element array
+        if(nums.length < 2) return res;
+        for(int i = 0;i<nums.length;i++){
+            if(map.containsKey(target-nums[i])){//map.containsKey(boolean) mean contain the key of not, yes return true and no return false
+                res[0] = map.getOrDefault(target-nums[i],0);//return the value(the index here) or null value will return the default value.
+                res[1] = i;
+                break;
+            }
+            map.put(nums[i],i);//put the key and value in hashmap
+        }
+        return res;
+    }
+}
+
+//time complexity O(n)
