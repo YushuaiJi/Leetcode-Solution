@@ -5,7 +5,7 @@ leetcode solution
 
 - [Array](#DFS)
 
-- [DS](#DS)
+- [Data Structure](#Data Structure)
 
 
 
@@ -15,4 +15,4 @@ leetcode solution
  [Array](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Array)
  
 ## Data Structure
-[DS](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
+[Data Structure](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
