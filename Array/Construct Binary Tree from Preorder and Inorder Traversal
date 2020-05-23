@@ -1,0 +1,54 @@
+分治法的思想：把原问题拆解成若干个与原问题结构相同但规模更小的子问题，待子问题解决以后，原问题就得以解决.
+“归并排序”和“快速排序”都是分治法思想的应用.
+1:会超出限制。
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int pre = preorder.length;
+        int in  = inorder.length;
+        return trackback(preorder,0,pre-1,inorder,0,in-1);
+    }
+    private TreeNode trackback(int[] preorder, int left_preorder, int right_preorder,
+    int[] inorder, int left_inorder, int right_inoder){
+        if(left_preorder > right_preorder || left_inorder > right_inoder) return null;
+        int pivot = preorder[left_preorder];
+        TreeNode root = new TreeNode(pivot);
+        int pivot_root = left_inorder;
+        while(root.val != inorder[pivot_root]) pivot_root ++;
+        root.left = trackback(preorder,left_preorder,left_preorder+pivot_root-left_inorder,inorder,left_inorder,pivot_root-1);
+        root.right = trackback(preorder,pivot_root-left_inorder+left_preorder+1,right_preorder,inorder, pivot_root+1,right_inoder);
+        return root;
+    }
+}
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+
+class Solution {
+    private Map<Integer, Integer> hash;
+    private int[] preorder;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int pre = preorder.length;
+        int in  = inorder.length;
+        this.preorder = preorder;
+        this.hash = new HashMap<>();
+        for(int i=0;i < in;i++) hash.put(inorder[i],i);
+        return trackback(0,pre-1,0,in-1);
+    }
+    private TreeNode trackback(int left_preorder, int right_preorder, int left_inorder, int right_inoder){
+        if(left_preorder > right_preorder || left_inorder > right_inoder) return null;
+        int pivot = preorder[left_preorder];
+        TreeNode root = new TreeNode(pivot);
+        int pivot_root = hash.get(pivot);
+        root.left = trackback(left_preorder+1,left_preorder+pivot_root-left_inorder,left_inorder,pivot_root-1);
+        root.right = trackback(pivot_root-left_inorder+left_preorder+1,right_preorder,pivot_root+1,right_inoder);
+        return root;
+    }
+}
