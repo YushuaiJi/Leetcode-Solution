@@ -1,0 +1,17 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int length = coins.length;
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp,amount+1);//最多硬币数额，也是有1块的硬币构成amount，从而可以达到要求。
+        dp[0] = 0;//dp[0]组成0块钱，需要的最少的硬币数量数量
+        for(int i=1;i<=amount;i++){
+            for(int coin:coins){
+                if(coin<=i){
+                    dp[i] = Math.min(dp[i],dp[i-coin]+1);//dp[i]代表着存到i这么多的钱需要的最小数量的硬币，其等于dp[i],dp[i-coin]+1的最小值
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];//如果dp[amount]数量大于amount。说明肯定用到了不是coin中的硬币面值，则构不成需要的数额。
+        //其实这里用amount+1不好理解，最好用max，这样好理解
+    }
+}
