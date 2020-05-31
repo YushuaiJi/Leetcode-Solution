@@ -1,0 +1,19 @@
+problem 1;
+code:
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[][] dp = new int[prices.length][2]; //dp[i][j]代表第i天，是否拥有股票[j]=1是代表拥有。
+        if(prices.length == 0) return 0;
+        for(int i=0;i<prices.length;i++){
+            if(i-1 == -1){
+                dp[i][0] = 0;//没开始交易
+                dp[i][1] = -prices[i];//第一天买了股票，所以等于-price第一天
+                continue;
+            }
+            dp[i][1] = Math.max(dp[i-1][1],-prices[i]);//dp[i][1]第i天拥有股票，可能为前一天还是拥有股票，或者是今天买进股票dp[i][0] = 0
+            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]+prices[i]);//dp[i][0]第i天不拥有股票，可能为前一天还是拥有股票,今天卖了，或者是前一天也不拥有股票。
+        }
+        return dp[prices.length-1][0];
+    }
+}
+
