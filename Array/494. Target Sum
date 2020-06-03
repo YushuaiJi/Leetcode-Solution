@@ -1,0 +1,17 @@
+class Solution {
+    public int findTargetSumWays(int[] nums, int S) {
+        return traceback(nums,S,0);
+    }
+    private int traceback(int[] nums,int S,int left){
+        if(left==nums.length && S == 0){
+            return 1;
+        }
+        if(S != 0 && left == nums.length){
+            return 0;
+        }
+        int count = 0;
+        count +=traceback(nums,S-nums[left],left+1);
+        count +=traceback(nums,S+nums[left],left+1);
+        return count;
+    }
+}
