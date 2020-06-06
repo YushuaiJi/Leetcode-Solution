@@ -1,0 +1,46 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    List<List<Integer>> elements = new ArrayList<>();
+    int maxlocation = 0;
+    int minlocation = 0;
+    int maxlevel = 0;
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) return res;
+        traceback(root,0,0);
+        for(int i=minlocation;i<=maxlocation;i++){
+            List<Integer> temp = new ArrayList<>();
+            for(int j=0;j<=maxlevel;j++){
+                List<Integer> temp1 = new ArrayList<>();
+                for(List<Integer> element:elements){
+                    if(element.get(1)==i &&element.get(2)==j) temp1.add(element.get(0));
+                }
+                Collections.sort(temp1);
+                for(int h=0;h<temp1.size();h++) temp.add(temp1.get(h));
+            }
+            res.add(temp);
+        }
+        return res;
+    }
+    private void traceback(TreeNode root,int location,int level){
+        if(root == null) return;
+        maxlocation = Math.max(maxlocation,location);
+        minlocation = Math.min(minlocation,location);
+        maxlevel = Math.max(maxlevel,level);
+        List<Integer> place = new ArrayList<>();
+        place.add(root.val);
+        place.add(location);
+        place.add(level);
+        elements.add(place);
+        traceback(root.left,location-1,level+1);
+        traceback(root.right,location+1,level+1);
+    }
+}
