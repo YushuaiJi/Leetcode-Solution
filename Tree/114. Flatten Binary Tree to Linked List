@@ -1,0 +1,48 @@
+/**
+先序遍历（深度优先搜索）
+中序遍历（深度优先搜索）（尤其二叉搜索树）
+后序遍历（深度优先搜索）
+层序遍历（广度优先搜索）（尤其按照层来解决问题的时候）
+序列化与反序列化（结构唯一性问题）
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        while(root != null){
+            if(root.left == null) root = root.right;
+            else{
+                TreeNode node = root.left;
+                while(node.right != null) node = node.right;
+                node.right = root.right;
+                root.right = root.left;
+                root.left = null;
+                node = root.right;
+            }
+        }
+    }
+}
+
+class Solution {
+        TreeNode pre = null;
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        flatten(root.right);
+        flatten(root.left);
+        root.right = pre;
+        root.left = null;
+        pre = root;
+    }
+}
