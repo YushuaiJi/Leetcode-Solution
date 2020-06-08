@@ -1,0 +1,26 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> DFS_travesal  = new ArrayList<>();
+        if(root == null) return DFS_travesal;
+        DFS(DFS_travesal, root, 0);
+        return DFS_travesal;
+}
+    private void DFS(List<List<Integer>> list,TreeNode node, int i){
+        if(list.size()<i+1){//判断是不是该层，如果i+1超过了层，说明是新的一层，小于说明就是第i层的的node。
+            List <Integer> templist = new ArrayList<>();
+            list.add(templist);
+        }
+        list.get(i).add(node.val);
+        if(node.left != null) DFS(list, node.left, i+1);
+        if(node.right != null) DFS(list, node.right, i+1);
+        }
+    }
