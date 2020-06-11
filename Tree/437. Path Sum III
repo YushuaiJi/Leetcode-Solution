@@ -1,0 +1,48 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    HashMap<Integer,Integer> map = new HashMap<>();
+    int sum1;
+    public int pathSum(TreeNode root, int sum) {
+        if(root == null) return 0;
+        map.put(0,1);
+        sum1 = sum;
+        return traceback(root,0); 
+    }
+
+    private int traceback(TreeNode root,int presum){
+        if(root == null) return 0;
+        int count = 0;
+        presum += root.val;
+        count += map.getOrDefault(presum-sum1,0);
+        map.put(presum,map.getOrDefault(presum,0)+1);
+        count +=traceback(root.left,presum);
+        count += traceback(root.right,presum);
+        map.put(presum,map.getOrDefault(presum,0)-1);
+        return count;
+    }
+}
+method 2;
+class Solution {
+    public int pathSum(TreeNode root, int sum) {
+        if(root == null) return 0;
+        int res = countpath(root,sum);
+        int left = pathSum(root.left,sum);
+        int right = pathSum(root.right,sum);
+        return left+right+res;
+    }
+
+    private int countpath(TreeNode root,int sum){
+        if(root == null) return 0;
+        sum -= root.val;
+        int count = sum==0 ? 1:0;
+        return count+countpath(root.left,sum)+countpath(root.right,sum);
+    }
+}
