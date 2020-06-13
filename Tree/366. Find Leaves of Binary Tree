@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> findLeaves(TreeNode root) {
+        if(root == null) return res;
+        postorder(root);
+        return res;
+    }
+     private int postorder(TreeNode root){
+         if(root == null) return -1;
+         int left = postorder(root.left);
+         int right = postorder(root.right);
+         int depth = Math.max(left,right)+1;
+         if(res.size() == depth){
+             List<Integer> elem = new ArrayList<>();
+             res.add(elem);
+             res.get(depth).add(root.val);
+         }else{
+             res.get(depth).add(root.val);
+         }
+         return depth;
+     }
+}
