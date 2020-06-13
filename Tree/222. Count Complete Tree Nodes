@@ -1,0 +1,43 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int count;
+    public int countNodes(TreeNode root) {
+         if(root == null) return 0;
+         int left = postorder(root.left);
+         int right = postorder(root.right);
+         if(left == right) return countNodes(root.right) + (1<<left);
+         else return countNodes(root.left) + (1<<right);
+    }
+
+    private int postorder(TreeNode root){
+        if(root == null) return 0;
+        int left = postorder(root.left);
+        int right = postorder(root.right);
+        int max =Math.max(left,right) +1;
+        return max;
+    }
+}
+
+method 2;
+class Solution {
+    int count;
+    public int countNodes(TreeNode root) {
+        travseal(root);
+        return count;
+    }
+
+    private void travseal(TreeNode root){
+        if(root == null) return;
+        count++;
+        travseal(root.left);
+        travseal(root.right);
+    }
+}
