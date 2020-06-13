@@ -7,20 +7,50 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+ 
+DFS method;
+class Solution {
+    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        if(root == null) return res;
+        in_order_travesal(root,0);
+        return res;
+    }
+
+    private void in_order_travesal(TreeNode root, int level){
+        if(root == null) return;
+        if(res.size()<=level){
+            List<Integer> elem = new ArrayList<>();
+            res.add(elem);
+            res.get(level).add(root.val);
+        }else{
+            res.get(level).add(root.val);
+        }
+        level ++;
+        in_order_travesal(root.left,level);
+        in_order_travesal(root.right,level);
+    }
+}
+
+
+BFS method:
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> DFS_travesal  = new ArrayList<>();
-        if(root == null) return DFS_travesal;
-        DFS(DFS_travesal, root, 0);
-        return DFS_travesal;
-}
-    private void DFS(List<List<Integer>> list,TreeNode node, int i){
-        if(list.size()<i+1){//判断是不是该层，如果i+1超过了层，说明是新的一层，小于说明就是第i层的的node。
-            List <Integer> templist = new ArrayList<>();
-            list.add(templist);
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> q = new ArrayDeque<>();
+        if(root == null) return res;
+        q.offer(root);
+        while(!q.isEmpty()){
+            List<Integer> elem = new ArrayList<>();
+            int n = q.size();
+            for(int i=0;i<n;i++){
+                TreeNode node = q.poll();
+                elem.add(node.val);
+                if(node.left != null) q.offer(node.left);
+                if(node.right != null) q.offer(node.right);
+            }
+            res.add(elem);
         }
-        list.get(i).add(node.val);
-        if(node.left != null) DFS(list, node.left, i+1);
-        if(node.right != null) DFS(list, node.right, i+1);
-        }
+        return res;
     }
+}
