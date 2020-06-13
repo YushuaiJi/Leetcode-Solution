@@ -7,6 +7,10 @@ leetcode solution
 
 - [Basic](#Basic)
 
+- [Tree](#Tree)
+
+
+
 
 
 
@@ -16,3 +20,6 @@ leetcode solution
  
 ## Data Structure
 [Basic](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Data%20Structure)
+
+## Tree
+[Tree](https://github.com/YushuaiJi/Leetcode_solution/tree/master/Tree)
