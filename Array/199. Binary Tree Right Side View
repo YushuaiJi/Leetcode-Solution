@@ -1,0 +1,25 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    List<Integer> res = new ArrayList<>();
+    public List<Integer> rightSideView(TreeNode root) {
+        if(root == null) return res;
+        reverseinlevel(root,0);
+        return res;
+    }
+
+    private void reverseinlevel(TreeNode root, int level){
+        if(root == null) return;
+        if(res.size() == level) res.add(root.val);
+        level++;
+        reverseinlevel(root.right,level);
+        reverseinlevel(root.left,level);
+    }
+}
