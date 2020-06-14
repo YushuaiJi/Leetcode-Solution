@@ -1,4 +1,4 @@
-# Leetcode_solution
+# Leetcode Solution
 leetcode solution
 
 ## Table of Contents
