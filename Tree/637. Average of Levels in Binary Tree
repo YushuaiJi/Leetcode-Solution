@@ -1,0 +1,24 @@
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Integer> count = new ArrayList<>();
+        List<Double> res = new ArrayList<>();
+        dfs(root,0,count,res);
+        for(int i=0;i<res.size();i++) res.set(i,(double)res.get(i)/count.get(i));
+        return res;
+    }
+
+    private void dfs(TreeNode root, int level, List<Integer> count,List<Double> res){
+        if(root == null) return;
+        if(level < res.size()){
+            res.set(level,(double)(res.get(level)+root.val));
+            count.set(level,count.get(level)+1);
+        }else{
+            res.add((double)root.val);
+            count.add(1);
+        }
+        level ++;
+        dfs(root.left,level,count,res);
+        dfs(root.right,level,count,res);
+    }
+}
+
