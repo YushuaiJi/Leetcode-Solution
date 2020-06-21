@@ -1,0 +1,29 @@
+class Solution {
+    public int myAtoi(String str) {
+        if(str.length() == 0) return 0;
+        char[] s = str.toCharArray();
+        boolean negative = false;
+        int idx = 0;
+        while(s[idx] == ' '){
+            idx++;
+            if(idx == s.length) return 0;
+        }
+        if(s[idx] == '-') {
+            negative = !negative;
+            idx++;
+        }else if(s[idx] == '+'){
+            idx++;
+        }
+        if(idx == s.length) return 0;
+        if(!Character.isDigit(s[idx])) return 0;
+        int ans = 0;
+        while(idx<s.length && Character.isDigit(s[idx])){
+            int digit = s[idx]-'0';
+            if(ans > (Integer.MAX_VALUE-digit)/10) return negative? Integer.MIN_VALUE:Integer.MAX_VALUE;
+            ans = ans*10+digit;
+            idx++;
+        }
+        if(negative) return -ans;
+        else return ans;
+    }
+}
